@@ -1,0 +1,20 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+.DS_Store
+coverage
+dev-dist
+.playwright
+test-results
+playwright-report
+.sentryclirc
+
+# OMC harness state (not part of the project)
+.omc/
+.omc/state/
+
+# Local Claude Code session settings
+.claude/settings.local.json
+.claude/*.local.json
