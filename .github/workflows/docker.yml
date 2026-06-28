@@ -28,6 +28,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # fetch-depth: 0 is required for docker/metadata-action to resolve
+          # semver tags on tag-push events. With the default shallow clone,
+          # {{version}} resolves to empty and semver tags are skipped —
+          # only :sha-<7> gets pushed even when triggering on v*.*.* tags.
+          fetch-depth: 0
 
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v3
