@@ -63,7 +63,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9.9.0",
     "globals": "^17.7.0",
-    "jsdom": "^25.0.0",
+    "jsdom": "^29.1.1",
     "msw": "^2.4.0",
     "postcss": "^8.4.41",
     "prettier": "^3.3.0",
