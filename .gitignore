@@ -10,6 +10,7 @@ dev-dist
 test-results
 playwright-report
 .sentryclirc
+*.tsbuildinfo
 
 # OMC harness state (not part of the project)
 .omc/
