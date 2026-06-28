@@ -2,7 +2,7 @@
 # pnpm 11 requires Node >= 22.13 (uses built-in node:sqlite)
 FROM node:22-alpine AS build
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN npm install -g pnpm && pnpm install --frozen-lockfile
 COPY . .
 ARG VITE_API_BASE_URL=https://api.example.com
