@@ -24,7 +24,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node: ['20', '22']
+        # pnpm 11 requires Node >= 22.13 (uses built-in node:sqlite).
+        # Node 20 cannot run pnpm 11 and is dropped from the matrix.
+        node: ['22']
 
     steps:
       - name: Checkout

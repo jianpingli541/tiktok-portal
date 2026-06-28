@@ -1,7 +1,7 @@
 # TIKTON Portal — CI/CD Plan
 
 > Status: design doc, ready to implement.
-> Stack: React 18 + Vite 5 + TS strict SPA · pnpm 11 · Node 20/22 · nginx-unprivileged · playwright e2e.
+> Stack: React 18 + Vite 5 + TS strict SPA · pnpm 11 · Node ≥ 22.13 · nginx-unprivileged · playwright e2e.
 > Audience: maintainers and reviewers of the GitHub Actions pipeline.
 
 ## 1. Goals & Non-Goals

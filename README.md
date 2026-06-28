@@ -54,17 +54,18 @@ Optional: wire it as a `pre-push` hook — `ln -s ../../scripts/ci-local.sh .git
 2. Commit using Conventional Commits (`feat: ...`, `fix(scope): ...`).
 3. Push the branch and open a PR targeting `main`.
 4. Wait for the four required status checks to be green:
-   - `build (20)` — typecheck + lint + test + build + MSW guard on Node 20
-   - `build (22)` — same matrix on Node 22
+   - `build (22)` — typecheck + lint + test + coverage gate + build + MSW guard on Node 22
    - `Docker build (linux/amd64)` — Dockerfile still produces a valid image
 5. Get one approving review (branch protection enforces this).
 6. Merge via squash or rebase — linear history is required.
+
+> **Note**: pnpm 11 requires Node ≥ 22.13 (uses built-in `node:sqlite`). Node 20 is no longer in the CI matrix.
 
 ### CI pipeline overview
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
-| `ci.yml` | push to `main`, PR, manual | Fast feedback (typecheck / lint / unit tests / build / MSW guard) on Node 20 + 22 |
+| `ci.yml` | push to `main`, PR, manual | Fast feedback (typecheck / lint / unit tests / coverage gate / build / MSW guard) on Node 22 |
 | `docker.yml` | push to `main`, PR, manual | Multi-arch (amd64 + arm64) image build, push to GHCR on `main`, Trivy scan |
 | `release.yml` | push tag `v*.*.*` | Build, package `dist`, generate changelog via git-cliff, create GitHub Release |
 | `e2e-nightly.yml` | cron `0 2 * * *` UTC, manual | Playwright e2e against Chromium; non-blocking signal |

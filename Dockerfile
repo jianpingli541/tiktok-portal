@@ -1,5 +1,6 @@
 # Build stage
-FROM node:20-alpine AS build
+# pnpm 11 requires Node >= 22.13 (uses built-in node:sqlite)
+FROM node:22-alpine AS build
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm install --frozen-lockfile
