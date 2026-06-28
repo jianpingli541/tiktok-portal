@@ -1,6 +1,12 @@
 # TIKTON Portal
 
+[![CI](https://github.com/jianpingli541/tiktok-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/jianpingli541/tiktok-portal/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/jianpingli541/tiktok-portal)](https://github.com/jianpingli541/tiktok-portal/releases)
+[![Docker](https://img.shields.io/badge/ghcr.io-jianpingli541%2Ftiktok--portal-blue)](https://github.com/jianpingli541/tiktok-portal/pkgs/container/tiktok-portal)
+
 Creator-facing portal for the TIKTON video repurposing platform. Pure static SPA, talks to the public TIKTON API.
+
+> **Status**: v0.1.0 released. CI + Docker multi-arch + GH Release workflow all green. See [`docs/DEPLOY.md`](docs/DEPLOY.md) for production deployment.
 
 ## Quick start
 
