@@ -22,31 +22,71 @@ body = """
 {% endfor %}
 """
 trim = true
-footer = """
-"""
+footer = ""
 
 [git]
 conventional_commits = true
 filter_unconventional = true
 split_commits = false
 
-[commit_parsers]
-# Conventional types → groups
-{ message = "^feat", group = "Features" }
-{ message = "^fix", group = "Bug Fixes" }
-{ message = "^perf", group = "Performance" }
-{ message = "^refactor", group = "Refactor" }
-{ message = "^docs", group = "Documentation" }
-{ message = "^test", group = "Tests" }
-{ message = "^build", group = "Build System" }
-{ message = "^ci", group = "CI" }
-{ message = "^chore", group = "Chores" }
-{ message = "^style", group="Styling" }
-{ message = "^revert", group="Reverts" }
+# commit_parsers: each parser is an array-of-tables (one [[commit_parsers]] block).
+# Inline-table shorthand `{ ... }` is only valid inside an array; here we declare
+# each parser as its own [[commit_parsers]] table so git-cliff v2.x accepts it.
+[[commit_parsers]]
+message = "^feat"
+group = "Features"
+
+[[commit_parsers]]
+message = "^fix"
+group = "Bug Fixes"
+
+[[commit_parsers]]
+message = "^perf"
+group = "Performance"
+
+[[commit_parsers]]
+message = "^refactor"
+group = "Refactor"
+
+[[commit_parsers]]
+message = "^docs"
+group = "Documentation"
+
+[[commit_parsers]]
+message = "^test"
+group = "Tests"
+
+[[commit_parsers]]
+message = "^build"
+group = "Build System"
+
+[[commit_parsers]]
+message = "^ci"
+group = "CI"
+
+[[commit_parsers]]
+message = "^chore"
+group = "Chores"
+
+[[commit_parsers]]
+message = "^style"
+group = "Styling"
+
+[[commit_parsers]]
+message = "^revert"
+group = "Reverts"
 
 # Skip dependency / merge commits
-{ message = "^Merge", skip = true }
-{ message = "^(deps|build)\\(", skip = true }
+[[commit_parsers]]
+message = "^Merge"
+skip = true
 
-# Mark breaking changes
-{ message = "^.*!:", body = "BREAKING CHANGE", group = "Breaking Changes" }
+[[commit_parsers]]
+message = "^(deps|build)\\("
+skip = true
+
+# Mark breaking changes (conventional `!` marker or footer)
+[[commit_parsers]]
+message = "^.*!:"
+body = "BREAKING CHANGE"
+group = "Breaking Changes"
