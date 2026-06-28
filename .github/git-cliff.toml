@@ -9,7 +9,7 @@ All notable changes to **TIKTON Portal** are documented here.\n
 """
 body = """
 {% if version %}\
-## [{{ version }}](https://github.com/{{ github.repository }}/tree/{{ version }}) — {{ timestamp | date(format="%Y-%m-%d") }}
+## [{{ version }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/tree/{{ version }}) — {{ timestamp | date(format="%Y-%m-%d") }}
 {% else %}\
 ## Unreleased
 {% endif %}\
@@ -28,6 +28,12 @@ footer = ""
 conventional_commits = true
 filter_unconventional = true
 split_commits = false
+
+# Pin remote so template can render owner/repo URLs without relying on
+# git-cliff's auto-detection (which fails in CI for shallow clones).
+[remote.github]
+owner = "jianpingli541"
+repo = "tiktok-portal"
 
 # commit_parsers: each parser is an array-of-tables (one [[commit_parsers]] block).
 # Inline-table shorthand `{ ... }` is only valid inside an array; here we declare
