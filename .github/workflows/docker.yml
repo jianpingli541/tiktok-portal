@@ -1,0 +1,89 @@
+name: Docker
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    name: build (${{ matrix.platform }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        # PRs only build linux/amd64 to keep CI fast; main builds both archs.
+        platform:
+          - linux/amd64
+          - linux/arm64
+        include:
+          - platform: linux/amd64
+            push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          - platform: linux/arm64
+            push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Extract metadata (tags, labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=sha-
+            type=ref,event=branch
+            type=raw,value=latest,enable={{is_default_branch}}
+          labels: |
+            org.opencontainers.image.title=tiktok-portal
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Build & push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: ${{ matrix.platform }}
+          push: ${{ matrix.push }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=tiktok-portal-${{ matrix.platform }}
+          cache-to: type=gha,mode=max,scope=tiktok-portal-${{ matrix.platform }}
+          build-args: |
+            VITE_API_BASE_URL=${{ vars.VITE_API_BASE_URL_STAGING || secrets.VITE_API_BASE_URL || 'https://api.example.com' }}
+            VITE_ENABLE_MOCK=false
+
+      - name: Trivy vulnerability scan (non-blocking)
+        if: matrix.platform == 'linux/amd64' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'

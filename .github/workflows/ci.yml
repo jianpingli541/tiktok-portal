@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Cancel in-progress runs for the same branch / PR to save minutes on force-pushes.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+# 10 min hard cap to surface runaway jobs early.
+jobs:
+  build:
+    name: build (${{ matrix.node }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: true
+      matrix:
+        node: ['20', '22']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Setup Node ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'pnpm'
+
+      - name: Install (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+
+      - name: Cache Vite
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.vite
+            .vite
+          key: vite-${{ matrix.node }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            vite-${{ matrix.node }}-
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Unit tests (vitest + GitHub reporter)
+        run: pnpm test -- --reporter=github
+
+      - name: Coverage gate (v8 + 70/60 thresholds)
+        run: pnpm test:coverage -- --reporter=github
+
+      - name: Build
+        run: pnpm build
+
+      - name: MSW leak guard (dist/ must not contain mockServiceWorker)
+        run: |
+          set -euo pipefail
+          if find dist/ -name 'mockServiceWorker*' -print -quit | grep -q .; then
+            echo "::error::MSW leaked into production bundle — mockServiceWorker.* found in dist/" >&2
+            find dist/ -name 'mockServiceWorker*' -print >&2
+            exit 1
+          fi
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.node }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.node }}
+          path: coverage/
+          if-no-files-found: ignore
+          retention-days: 7

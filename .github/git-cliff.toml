@@ -1,0 +1,52 @@
+# git-cliff configuration for TIKTON Portal.
+# Conventional Commits → grouped changelog.
+# https://git-cliff.org/
+
+[changelog]
+header = """
+# Changelog\n
+All notable changes to **TIKTON Portal** are documented here.\n
+"""
+body = """
+{% if version %}\
+## [{{ version }}](https://github.com/{{ github.repository }}/tree/{{ version }}) — {{ timestamp | date(format="%Y-%m-%d") }}
+{% else %}\
+## Unreleased
+{% endif %}\
+{% for group, commits in commits | filter(attribute="merge_commit", value=false) | group_by(attribute="group") %}
+### {{ group | upper_first }}
+{% for commit in commits | sort(attribute="message") %}
+- {% if commit.breaking %}[**breaking**]{% endif %}{{ commit.message | upper_first }} ({{ commit.id | truncate(length=7, end="") }}){% if commit.breaking %}\
+  {% endif %}
+{% endfor %}
+{% endfor %}
+"""
+trim = true
+footer = """
+"""
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+split_commits = false
+
+[commit_parsers]
+# Conventional types → groups
+{ message = "^feat", group = "Features" }
+{ message = "^fix", group = "Bug Fixes" }
+{ message = "^perf", group = "Performance" }
+{ message = "^refactor", group = "Refactor" }
+{ message = "^docs", group = "Documentation" }
+{ message = "^test", group = "Tests" }
+{ message = "^build", group = "Build System" }
+{ message = "^ci", group = "CI" }
+{ message = "^chore", group = "Chores" }
+{ message = "^style", group="Styling" }
+{ message = "^revert", group="Reverts" }
+
+# Skip dependency / merge commits
+{ message = "^Merge", skip = true }
+{ message = "^(deps|build)\\(", skip = true }
+
+# Mark breaking changes
+{ message = "^.*!:", body = "BREAKING CHANGE", group = "Breaking Changes" }

@@ -1,0 +1,84 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: build + GitHub Release
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout (full history for changelog)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: MSW leak guard
+        run: |
+          set -euo pipefail
+          if find dist/ -name 'mockServiceWorker*' -print -quit | grep -q .; then
+            echo "::error::MSW leaked into release bundle — mockServiceWorker.* found in dist/" >&2
+            find dist/ -name 'mockServiceWorker*' -print >&2
+            exit 1
+          fi
+
+      - name: Package dist as zip
+        run: |
+          set -euo pipefail
+          cd dist
+          zip -r ../dist-${{ github.ref_name }}.zip .
+          cd ..
+          ls -la dist-${{ github.ref_name }}.zip
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-release
+          path: |
+            dist/
+            dist-${{ github.ref_name }}.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Generate changelog
+        id: changelog
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: .github/git-cliff.toml
+          args: --tag ${{ github.ref_name }} --output CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body_path: CHANGELOG.md
+          fail_on_unmatched_files: true
+          files: |
+            dist-${{ github.ref_name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
