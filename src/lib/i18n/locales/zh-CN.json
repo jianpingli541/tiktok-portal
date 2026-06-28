@@ -1,0 +1,336 @@
+{
+  "common": {
+    "appName": "TIKTON 创作者门户",
+    "loading": "加载中…",
+    "guest": "访客",
+    "logout": "退出登录",
+    "signOut": "退出",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "back": "返回",
+    "retry": "重试",
+    "download": "下载",
+    "menu": "菜单",
+    "language": "语言",
+    "current": "当前"
+  },
+  "errors": {
+    "network_error": "网络错误，请检查您的连接后重试。",
+    "unauthorized": "您的会话已过期，请重新登录。",
+    "quota_exceeded": "本月配额已用完，请升级套餐。",
+    "validation_failed": "部分字段无效，请检查后重试。",
+    "task_not_found": "未找到该任务。",
+    "plans_load_failed": "加载套餐失败。",
+    "something_went_wrong": "出现了一些问题。",
+    "must_be_tiktok_url": "请输入有效的 TikTok 链接"
+  },
+  "languages": {
+    "en": "English",
+    "zh-CN": "中文",
+    "es": "Spanish"
+  },
+  "subtitleStyles": {
+    "classic": "经典",
+    "bold": "加粗",
+    "minimal": "极简"
+  },
+  "footer": {
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "refund": "退款政策",
+    "cookiePreferences": "Cookie 偏好",
+    "rights": "保留所有权利。"
+  },
+  "consent": {
+    "banner": {
+      "title": "我们尊重您的隐私",
+      "body": "我们使用 Cookie 来保持您的登录状态并了解服务的使用情况。您可以选择全部接受、拒绝非必要项，或自定义设置。",
+      "acceptAll": "全部接受",
+      "rejectAll": "全部拒绝",
+      "savePreferences": "保存偏好",
+      "customize": "自定义",
+      "hideDetails": "收起详情"
+    },
+    "preferences": {
+      "title": "Cookie 偏好",
+      "description": "调整门户使用 Cookie 的方式。修改将立即生效。",
+      "save": "保存偏好",
+      "reset": "恢复默认",
+      "lastUpdated": "最近更新于 {{date}}"
+    },
+    "categories": {
+      "necessary": "必要",
+      "necessaryDescription": "用于登录、会话和安全防护的 Cookie，关闭后服务将无法运行。",
+      "analytics": "分析",
+      "analyticsDescription": "用于错误上报（Sentry）和聚合使用分析，帮助我们改进产品。",
+      "marketing": "营销",
+      "marketingDescription": "预留给未来的营销活动，目前未启用任何营销 Cookie。",
+      "alwaysOn": "始终启用"
+    }
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "lastUpdated": "最近更新于 {{date}}",
+    "intro": "本隐私政策说明 TIKTON 创作者门户（以下简称\"我们\"）在您使用我们的视频二次创作服务时如何收集、使用和保护您的个人信息。",
+    "contactEmail": "privacy@tikton.example",
+    "dataCollected": {
+      "title": "我们收集的信息",
+      "intro": "我们仅收集运营服务所必需的最少数据：",
+      "items": {
+        "email": "账户邮箱——用于登录、通知和账户找回。",
+        "payment": "支付信息——由 Stripe 处理；我们仅存储令牌，不存储卡号。",
+        "ip": "IP 地址——用于安全防护、欺诈检测和滥用防控。",
+        "device": "设备和浏览器元数据（User-Agent、语言、视窗大小）——用于渲染和诊断。",
+        "cookies": "Cookie——必要的会话 Cookie 和经您同意的分析 Cookie。",
+        "uploads": "源 TikTok 链接和流水线输出——仅在为提供服务所需的时间内保留。"
+      }
+    },
+    "purposes": {
+      "title": "我们如何使用信息",
+      "intro": "我们出于以下目的处理您的个人信息：",
+      "items": {
+        "service": "提供服务——验证您的身份，处理您提交的视频，并交付渲染结果。",
+        "billing": "账单——管理订阅、收款以及处理退款。",
+        "security": "安全——检测滥用、保护账户并调查安全事件。",
+        "improvement": "产品改进——了解整体使用情况以修复缺陷和规划功能。",
+        "legal": "法律合规——满足税务、会计和执法机关的合法要求。"
+      }
+    },
+    "thirdParties": {
+      "title": "第三方处理者",
+      "intro": "我们仅与以下子处理者共享数据，且只共享其履行角色所需的最少信息：",
+      "items": {
+        "stripe": "Stripe——支付处理。您的卡数据从不经过我们的服务器。",
+        "sentry": "Sentry——错误与性能监控（仅在您同意分析 Cookie 时启用）。",
+        "hosting": "云托管服务商——应用日志与静态资源。"
+      }
+    },
+    "rights": {
+      "title": "您的权利",
+      "intro": "依据您所在的司法管辖区（GDPR、CCPA 等），您享有以下权利：",
+      "items": {
+        "access": "访问——获取我们持有的关于您的个人数据副本。",
+        "rectification": "更正——纠正不准确或不完整的数据。",
+        "deletion": "删除——请求删除您的账户及相关数据。",
+        "portability": "可携带——以机器可读格式获取您的数据。",
+        "object": "反对——反对基于合法利益进行的处理。"
+      },
+      "contact": "如需行使任何权利，请联系："
+    },
+    "retention": {
+      "title": "数据保留",
+      "body": "我们将在账户存续期间保留账户数据，并在账户关闭后 30 天内予以删除，但法律要求保留的记录（如税务凭证）除外。"
+    }
+  },
+  "terms": {
+    "title": "服务条款",
+    "lastUpdated": "最近更新于 {{date}}",
+    "intro": "本服务条款适用于您对 TIKTON 创作者门户的使用。创建账户即表示您同意本条款。",
+    "legalReview": "[TODO: 公开发布前需经法务审核]",
+    "service": {
+      "title": "1. 服务说明",
+      "body": "TIKTON 创作者门户提供自动化的视频二次创作服务：下载公开的 TikTok 视频，自动生成字幕、配音、调色和配乐，并交付渲染结果。输出由 AI 生成，可能不完美；您有责任在发布前进行审核。"
+    },
+    "userObligations": {
+      "title": "2. 您的义务",
+      "items": {
+        "account": "妥善保管账户凭据。您对账户下的活动承担责任。",
+        "lawful": "仅提交您拥有合法改编权的视频，或属于公共领域的视频。",
+        "content": "不得提交违法、侵权、诽谤或侵犯任何第三方权利的内容。",
+        "noAbuse": "不得尝试破坏服务、进行逆向工程或使用本服务训练竞品模型。"
+      }
+    },
+    "ip": {
+      "title": "3. 知识产权",
+      "body": "我们保留服务本身（软件、品牌、设计）的全部权利。您保留您所提交源内容的权利，并在遵守本条款及原始内容所有者权利的前提下，享有我们为您生成的渲染结果的产权。"
+    },
+    "disclaimer": {
+      "title": "4. 免责声明",
+      "body": "服务按\"现状\"和\"可用\"原则提供。在法律允许的范围内，我们明确免除所有明示或暗示的保证，包括适销性、特定用途适用性和不侵权。"
+    },
+    "liability": {
+      "title": "5. 责任限制",
+      "body": "在法律允许的范围内，因服务引起或与服务相关的任何索赔，我们的累计责任不超过您在前 12 个月内支付给我们的金额，或 100 美元，以较高者为准。"
+    },
+    "termination": {
+      "title": "6. 终止",
+      "body": "若您严重违反本条款，我们可暂停或终止您的账户。您可随时在\"账户\"页面关闭账户；数据删除规则详见我们的隐私政策。"
+    },
+    "law": {
+      "title": "7. 适用法律",
+      "body": "本条款受公司注册地法律管辖，不考虑法律冲突原则。争议由该司法管辖区的有管辖权法院解决。"
+    }
+  },
+  "refund": {
+    "title": "退款政策",
+    "lastUpdated": "最近更新于 {{date}}",
+    "intro": "我们希望您对 TIKTON 创作者门户满意。如有任何问题，以下是退款规则。",
+    "supportEmail": "support@tikton.example",
+    "policy": {
+      "title": "1. 资格",
+      "body": "在以下情形下可申请退款：",
+      "items": {
+        "sevenDays": "新订阅首次扣款后 7 天内——全额退款，无需说明理由。",
+        "proRata": "超过 7 天——按当前计费周期未使用部分的比例退款，按日计算。",
+        "credits": "已购买但未使用的额度——按原始购买价退款。",
+        "exclusions": "附加项和一次性处理费在底层服务交付后不再退款。"
+      }
+    },
+    "process": {
+      "title": "2. 申请方式",
+      "body": "退款申请流程：",
+      "steps": {
+        "email": "使用您账户绑定的邮箱发送至 support@tikton.example。",
+        "review": "请附上发票号和简要原因（有助于我们改进）。",
+        "reply": "客服团队将在 5 个工作日内回复。",
+        "refund": "审批通过后，退款将在 10 个工作日内退至原支付方式。"
+      },
+      "contactLabel": "联系我们："
+    },
+    "timeline": {
+      "title": "3. 时间安排",
+      "body": "7 天窗口内的退款通常在 2 个工作日内处理完毕。其余申请按上述审核流程处理。我们会在每个步骤通过邮件通知您。"
+    }
+  },
+  "dataDeletion": {
+    "title": "删除我的数据",
+    "intro": "申请永久删除您的 TIKTON 创作者门户账户及全部相关数据。",
+    "warningTitle": "此操作不可撤销",
+    "warningBody": "一旦账户被删除，将无法恢复。以下内容将被永久移除：",
+    "consequences": {
+      "account": "您的账户、个人资料和会话。",
+      "tasks": "所有已提交的任务和渲染结果。",
+      "subscription": "活动订阅将立即取消；不再另行退款。"
+    },
+    "formTitle": "确认申请",
+    "confirmationEmailLabel": "确认邮箱",
+    "mustMatchAccount": "必须与账户绑定的邮箱一致。",
+    "submit": "发送删除请求",
+    "successTitle": "已受理删除请求",
+    "successBody": "我们已收到您的请求，将在 30 天内完成处理。处理过程将通过邮件通知您。",
+    "requestId": "请求 ID",
+    "scheduledFor": "计划执行时间"
+  },
+  "nav": {
+    "submit": "提交任务",
+    "tasks": "任务列表",
+    "account": "账户",
+    "billing": "订阅"
+  },
+  "landing": {
+    "tagline": "将 TikTok 视频二次创作到英文与西班牙语——自动字幕、语音、调色、配乐一站搞定。",
+    "getStarted": "立即开始",
+    "viewPricing": "查看套餐",
+    "features": {
+      "multiLanguage": {
+        "title": "多语言",
+        "description": "支持英 / 西双语，母语级 TTS 配音。"
+      },
+      "autoSubtitles": {
+        "title": "自动字幕",
+        "description": "Whisper 语音识别 + 风格化硬字幕。"
+      },
+      "brandSafeColor": {
+        "title": "品牌级调色",
+        "description": "逐片段电影感调色，安全合规。"
+      }
+    }
+  },
+  "pricing": {
+    "title": "套餐价格",
+    "perMonth": "/月",
+    "videosPerMonth": "{{count}} 个视频 / 月",
+    "choose": "选择 {{plan}}"
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "submit": "登录",
+      "email": "邮箱",
+      "password": "密码",
+      "noAccount": "还没有账号？",
+      "register": "注册"
+    },
+    "register": {
+      "title": "创建账户",
+      "titleWithPlan": "创建账户（{{plan}}）",
+      "submit": "创建账户",
+      "email": "邮箱",
+      "password": "密码（至少 8 位）",
+      "haveAccount": "已有账户？",
+      "signIn": "登录"
+    },
+    "verifyEmail": {
+      "title": "请检查您的邮箱",
+      "defaultEmail": "您的邮箱",
+      "body": "我们已将验证链接发送至 {{email}}。",
+      "afterVerified": "验证完成后，请登录。",
+      "signIn": "登录"
+    },
+    "forgotPassword": {
+      "title": "忘记密码",
+      "email": "邮箱",
+      "submit": "发送重置链接",
+      "success": "如果该邮箱存在，重置链接已发送。"
+    },
+    "validation": {
+      "invalidEmail": "请输入有效的邮箱地址。",
+      "passwordTooShort": "密码至少需要 8 位。"
+    }
+  },
+  "submit": {
+    "title": "提交视频",
+    "tiktokUrl": "TikTok 链接",
+    "tiktokUrlPlaceholder": "https://www.tiktok.com/@user/video/123",
+    "targetLanguage": "目标语言",
+    "subtitleStyle": "字幕风格",
+    "submit": "提交"
+  },
+  "tasks": {
+    "filter": {
+      "all": "全部",
+      "pending": "排队中",
+      "running": "处理中",
+      "completed": "已完成",
+      "failed": "失败",
+      "cancelled": "已取消"
+    },
+    "table": {
+      "id": "ID",
+      "lang": "语言",
+      "status": "状态",
+      "progress": "进度",
+      "created": "创建时间"
+    },
+    "detail": {
+      "title": "任务 {{id}}",
+      "source": "源链接：",
+      "target": "目标语言：",
+      "progress": "进度：",
+      "output": "输出：",
+      "pipelineSteps": "处理流水线",
+      "stepInProgress": "进行中",
+      "stepCompleted": "已完成"
+    }
+  },
+  "account": {
+    "profile": "个人资料",
+    "session": "会话",
+    "userId": "用户 ID：",
+    "email": "邮箱："
+  },
+  "billing": {
+    "currentPlan": "当前套餐",
+    "renews": "{{date}} 续费",
+    "videosPerMonth": "{{count}} 个视频 / 月",
+    "openingCheckout": "正在打开支付…"
+  },
+  "errorBoundary": {
+    "title": "出现了一些问题",
+    "body": "发生意外错误。请刷新页面，如问题持续请联系客服。",
+    "reload": "重新加载"
+  }
+}

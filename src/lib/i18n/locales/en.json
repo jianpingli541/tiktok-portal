@@ -1,0 +1,336 @@
+{
+  "common": {
+    "appName": "TIKTON Portal",
+    "loading": "Loading…",
+    "guest": "Guest",
+    "logout": "Logout",
+    "signOut": "Sign out",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "retry": "Retry",
+    "download": "Download",
+    "menu": "Menu",
+    "language": "Language",
+    "current": "Current"
+  },
+  "errors": {
+    "network_error": "Network error. Please check your connection and try again.",
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "quota_exceeded": "Your monthly quota has been exceeded. Please upgrade your plan.",
+    "validation_failed": "Some fields are invalid. Please review and try again.",
+    "task_not_found": "Task not found.",
+    "plans_load_failed": "Failed to load plans.",
+    "something_went_wrong": "Something went wrong.",
+    "must_be_tiktok_url": "Must be a TikTok URL"
+  },
+  "languages": {
+    "en": "English",
+    "zh-CN": "中文",
+    "es": "Spanish"
+  },
+  "subtitleStyles": {
+    "classic": "Classic",
+    "bold": "Bold",
+    "minimal": "Minimal"
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "refund": "Refund",
+    "cookiePreferences": "Cookie preferences",
+    "rights": "All rights reserved."
+  },
+  "consent": {
+    "banner": {
+      "title": "We respect your privacy",
+      "body": "We use cookies to keep you signed in and to understand how the service is used. You can accept all, reject non-essential, or pick what you allow.",
+      "acceptAll": "Accept all",
+      "rejectAll": "Reject all",
+      "savePreferences": "Save preferences",
+      "customize": "Customize",
+      "hideDetails": "Hide details"
+    },
+    "preferences": {
+      "title": "Cookie preferences",
+      "description": "Adjust how the portal uses cookies. Changes apply immediately.",
+      "save": "Save preferences",
+      "reset": "Reset to defaults",
+      "lastUpdated": "Last updated {{date}}"
+    },
+    "categories": {
+      "necessary": "Necessary",
+      "necessaryDescription": "Authentication, session, and security cookies. The service cannot function without them.",
+      "analytics": "Analytics",
+      "analyticsDescription": "Error reporting (Sentry) and aggregate usage metrics that help us improve the product.",
+      "marketing": "Marketing",
+      "marketingDescription": "Reserved for future campaigns. Currently no marketing cookies are set.",
+      "alwaysOn": "Always on"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated {{date}}",
+    "intro": "This Privacy Policy describes how TIKTON Portal (\"we\", \"us\") collects, uses, and protects your personal data when you use our video repurposing service.",
+    "contactEmail": "privacy@tikton.example",
+    "dataCollected": {
+      "title": "What we collect",
+      "intro": "We collect the minimum data needed to operate the service:",
+      "items": {
+        "email": "Account email address — used for sign-in, notifications, and account recovery.",
+        "payment": "Payment information — handled by Stripe; we store tokens, not card numbers.",
+        "ip": "IP address — used for security, fraud prevention, and abuse detection.",
+        "device": "Device and browser metadata (user agent, language, viewport) — used for rendering and diagnostics.",
+        "cookies": "Cookies — strictly necessary (session) plus opt-in analytics cookies.",
+        "uploads": "Source TikTok URLs and pipeline outputs — retained only as long as needed to deliver the service."
+      }
+    },
+    "purposes": {
+      "title": "How we use it",
+      "intro": "We process personal data for the following purposes:",
+      "items": {
+        "service": "Service delivery — authenticating you, processing your submitted videos, delivering the rendered output.",
+        "billing": "Billing — managing subscriptions, processing payments, and handling refunds.",
+        "security": "Security — detecting abuse, protecting accounts, and investigating incidents.",
+        "improvement": "Product improvement — understanding aggregate usage to fix bugs and prioritize features.",
+        "legal": "Legal compliance — meeting tax, accounting, and law-enforcement obligations when required."
+      }
+    },
+    "thirdParties": {
+      "title": "Third-party processors",
+      "intro": "We share data only with the sub-processors below, and only the minimum each needs to perform its role:",
+      "items": {
+        "stripe": "Stripe — payment processing. Card data never touches our servers.",
+        "sentry": "Sentry — error and performance monitoring (only if you grant analytics consent).",
+        "hosting": "Cloud hosting provider — application logs and stored assets."
+      }
+    },
+    "rights": {
+      "title": "Your rights",
+      "intro": "Depending on your jurisdiction (GDPR, CCPA, etc.) you have the right to:",
+      "items": {
+        "access": "Access — request a copy of the personal data we hold about you.",
+        "rectification": "Rectification — correct inaccurate or incomplete data.",
+        "deletion": "Deletion — request erasure of your account and associated data.",
+        "portability": "Portability — receive your data in a machine-readable format.",
+        "object": "Object — opt out of processing based on legitimate interest."
+      },
+      "contact": "To exercise any right, contact us at"
+    },
+    "retention": {
+      "title": "Data retention",
+      "body": "We retain account data for the life of the account and delete it within 30 days of account closure, except where retention is required by law (e.g. tax records)."
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated {{date}}",
+    "intro": "These Terms of Service govern your use of TIKTON Portal. By creating an account you agree to them.",
+    "legalReview": "[TODO: legal review before public launch]",
+    "service": {
+      "title": "1. The service",
+      "body": "TIKTON Portal provides automated video repurposing: download a public TikTok video, generate subtitles, voice, color grade, and music, and deliver a rendered output. Outputs are generated by AI and may not be perfect; you are responsible for reviewing them before publication."
+    },
+    "userObligations": {
+      "title": "2. Your obligations",
+      "items": {
+        "account": "Keep your account credentials confidential. You are responsible for activity under your account.",
+        "lawful": "Only submit videos that you have the legal right to repurpose, or that are in the public domain.",
+        "content": "Do not submit content that is unlawful, infringing, defamatory, or that violates any third-party rights.",
+        "noAbuse": "Do not attempt to disrupt the service, reverse-engineer it, or use it to train competing models."
+      }
+    },
+    "ip": {
+      "title": "3. Intellectual property",
+      "body": "We retain all rights in the service itself (software, brand, design). You retain rights to the source content you submit, and you own the rendered output we generate for you, subject to your compliance with these terms and the rights of the original content owner."
+    },
+    "disclaimer": {
+      "title": "4. Disclaimer",
+      "body": "The service is provided \"as is\" and \"as available\". To the extent permitted by law, we disclaim all warranties, express or implied, including merchantability, fitness for purpose, and non-infringement."
+    },
+    "liability": {
+      "title": "5. Limitation of liability",
+      "body": "To the extent permitted by law, our aggregate liability for any claim arising from or related to the service is limited to the amount you paid us in the 12 months preceding the claim, or USD 100, whichever is greater."
+    },
+    "termination": {
+      "title": "6. Termination",
+      "body": "We may suspend or terminate your account if you materially breach these terms. You may close your account at any time from the Account page; data deletion is governed by our Privacy Policy."
+    },
+    "law": {
+      "title": "7. Governing law",
+      "body": "These terms are governed by the laws of the jurisdiction in which our company is registered, without regard to conflict-of-laws principles. Disputes will be resolved in the competent courts of that jurisdiction."
+    }
+  },
+  "refund": {
+    "title": "Refund Policy",
+    "lastUpdated": "Last updated {{date}}",
+    "intro": "We want you to be happy with TIKTON Portal. If something is not right, here is how refunds work.",
+    "supportEmail": "support@tikton.example",
+    "policy": {
+      "title": "1. Eligibility",
+      "body": "Refunds are available under the following conditions:",
+      "items": {
+        "sevenDays": "Within 7 days of your first paid charge on a new subscription — full refund, no questions asked.",
+        "proRata": "After 7 days — prorated refund for the unused portion of the current billing period, calculated to the day.",
+        "credits": "Unused credits purchased but not consumed — refundable at the original purchase price.",
+        "exclusions": "Add-ons and one-off processing fees are non-refundable once the underlying service has been delivered."
+      }
+    },
+    "process": {
+      "title": "2. How to request",
+      "body": "To request a refund:",
+      "steps": {
+        "email": "Email support@tikton.example from the address on your account.",
+        "review": "Include the invoice number and a brief reason (helps us improve).",
+        "reply": "Our support team will reply within 5 business days.",
+        "refund": "Approved refunds are issued to the original payment method within 10 business days."
+      },
+      "contactLabel": "Reach us at"
+    },
+    "timeline": {
+      "title": "3. Timeline",
+      "body": "Refunds requested within the 7-day window are typically processed within 2 business days. Later requests follow the review timeline above. We will notify you at each step by email."
+    }
+  },
+  "dataDeletion": {
+    "title": "Delete my data",
+    "intro": "Request permanent deletion of your TIKTON Portal account and all associated personal data.",
+    "warningTitle": "This action is irreversible",
+    "warningBody": "Once your account is deleted, it cannot be recovered. The following will be permanently removed:",
+    "consequences": {
+      "account": "Your account, profile, and session.",
+      "tasks": "All submitted tasks and rendered outputs.",
+      "subscription": "Active subscription will be cancelled immediately; no further refunds are issued."
+    },
+    "formTitle": "Confirm your request",
+    "confirmationEmailLabel": "Confirmation email",
+    "mustMatchAccount": "Must match the email address on your account.",
+    "submit": "Send deletion request",
+    "successTitle": "Deletion requested",
+    "successBody": "We have received your request and will process it within 30 days. You will be notified by email at each step.",
+    "requestId": "Request ID",
+    "scheduledFor": "Scheduled for"
+  },
+  "nav": {
+    "submit": "Submit",
+    "tasks": "Tasks",
+    "account": "Account",
+    "billing": "Billing"
+  },
+  "landing": {
+    "tagline": "Repurpose TikTok videos into English & Spanish — automate subtitles, voice, color grade, music.",
+    "getStarted": "Get started",
+    "viewPricing": "View pricing",
+    "features": {
+      "multiLanguage": {
+        "title": "Multi-language",
+        "description": "Translate to EN / ES with native TTS."
+      },
+      "autoSubtitles": {
+        "title": "Auto subtitles",
+        "description": "Whisper ASR + stylized burnt-in subs."
+      },
+      "brandSafeColor": {
+        "title": "Brand-safe color",
+        "description": "Per-clip cinematic color grade."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "perMonth": "/mo",
+    "videosPerMonth": "{{count}} videos / month",
+    "choose": "Choose {{plan}}"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "submit": "Sign in",
+      "email": "Email",
+      "password": "Password",
+      "noAccount": "No account?",
+      "register": "Register"
+    },
+    "register": {
+      "title": "Create account",
+      "titleWithPlan": "Create account ({{plan}})",
+      "submit": "Create account",
+      "email": "Email",
+      "password": "Password (≥8 chars)",
+      "haveAccount": "Have an account?",
+      "signIn": "Sign in"
+    },
+    "verifyEmail": {
+      "title": "Check your email",
+      "defaultEmail": "your email",
+      "body": "We sent a verification link to {{email}}.",
+      "afterVerified": "Once verified, sign in.",
+      "signIn": "sign in"
+    },
+    "forgotPassword": {
+      "title": "Forgot password",
+      "email": "Email",
+      "submit": "Send reset link",
+      "success": "If the email exists, a reset link has been sent."
+    },
+    "validation": {
+      "invalidEmail": "Please enter a valid email address.",
+      "passwordTooShort": "Password must be at least 8 characters."
+    }
+  },
+  "submit": {
+    "title": "Submit a video",
+    "tiktokUrl": "TikTok URL",
+    "tiktokUrlPlaceholder": "https://www.tiktok.com/@user/video/123",
+    "targetLanguage": "Target language",
+    "subtitleStyle": "Subtitle style",
+    "submit": "Submit"
+  },
+  "tasks": {
+    "filter": {
+      "all": "all",
+      "pending": "pending",
+      "running": "running",
+      "completed": "completed",
+      "failed": "failed",
+      "cancelled": "cancelled"
+    },
+    "table": {
+      "id": "ID",
+      "lang": "Lang",
+      "status": "Status",
+      "progress": "Progress",
+      "created": "Created"
+    },
+    "detail": {
+      "title": "Task {{id}}",
+      "source": "Source:",
+      "target": "Target:",
+      "progress": "Progress:",
+      "output": "Output:",
+      "pipelineSteps": "Pipeline steps",
+      "stepInProgress": "In progress",
+      "stepCompleted": "Completed"
+    }
+  },
+  "account": {
+    "profile": "Profile",
+    "session": "Session",
+    "userId": "User ID:",
+    "email": "Email:"
+  },
+  "billing": {
+    "currentPlan": "Current plan",
+    "renews": "renews {{date}}",
+    "videosPerMonth": "{{count}} videos / month",
+    "openingCheckout": "Opening checkout…"
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "body": "An unexpected error occurred. Please reload the page or contact support if the problem persists.",
+    "reload": "Reload"
+  }
+}

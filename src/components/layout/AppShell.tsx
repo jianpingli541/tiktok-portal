@@ -1,0 +1,19 @@
+import type { ReactNode } from 'react';
+import Sidebar from './Sidebar';
+import Topbar from './Topbar';
+import Footer from './Footer';
+import CookieBanner from '@/components/CookieBanner';
+
+export default function AppShell({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Topbar />
+      <div className="flex flex-1">
+        <Sidebar />
+        <main className="flex-1 p-6">{children}</main>
+      </div>
+      <Footer />
+      <CookieBanner />
+    </div>
+  );
+}
